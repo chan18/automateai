@@ -1,0 +1,15 @@
+{
+  "name": "dict",
+  "version": "1.0.0",
+  "bin": "./bin/dict.js",
+  "description": "word cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chandrakanth",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^7.0.5"
+  }
+}
