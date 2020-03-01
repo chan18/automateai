@@ -1,6 +1,7 @@
 const ApiUtility = require('../lib/api-util');
 const chalk = require('chalk');
 const log = console.log;
+const utility = require('../lib/util.js');
 
 const defination = {
   word() {
@@ -9,9 +10,7 @@ const defination = {
       const apiUtility = new ApiUtility();
 
       apiUtility.getDefinitions(word).then((data) => {
-        data.forEach(function(data) {
-          log(chalk.bold.green(data.text));
-        });
+        utility.print(data);
       });
     }
   },

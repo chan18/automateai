@@ -10,15 +10,11 @@ const antonym = {
       const apiUtility = new ApiUtility();
 
       apiUtility.getRelatedWords(word)
-          .then(function(response) {
-            utility.getRelationsipType(response.data, 'antonym')
+          .then((data) => {
+            utility.getRelationsipType(data, 'antonym')
                 .forEach(function(word) {
                   log(chalk.bold.green(word));
                 });
-          })
-          .catch(function(error) {
-            log(chalk.bold(error.response.data.error +' '+
-            chalk.red.underline.bold('status:- ' + error.response.status)));
           });
     }
   },

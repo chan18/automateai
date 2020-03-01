@@ -1,3 +1,5 @@
+const chalk = require('chalk');
+const log = console.log;
 
 const utility = {
   getRelationsipType(data, relationsipType) {
@@ -12,6 +14,11 @@ const utility = {
       console.log('word of the day');
       return true;
     }
+  },
+  print(data) {
+    data.forEach(function(data) {
+      log(chalk.bold.green(data.text));
+    });
   },
 };
 

@@ -1,4 +1,5 @@
 const ApiUtility = require('../lib/api-util');
+const utility = require('../lib/util.js');
 const chalk = require('chalk');
 const log = console.log;
 
@@ -10,9 +11,7 @@ const example = {
 
       apiUtility.getExamples(word)
           .then(function(response) {
-            response.data.examples.forEach(function(data) {
-              log(chalk.bold.green(data.text));
-            });
+            utility.print(response.data.examples);
           })
           .catch(function(error) {
             log(chalk.bold(error.response.data.error +' '+

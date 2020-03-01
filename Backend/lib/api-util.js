@@ -44,7 +44,14 @@ class ApiUtility {
     const url = `${this.host}/word/${word}/`+
                 `relatedWords?api_key=${this.apikey}`;
 
-    return axios.get(url);
+    return axios.get(url)
+        .then(function(response) {
+          return response.data;
+        })
+        .catch(function(error) {
+          log(chalk.bold(error.response.data.error +' '+
+          chalk.red.underline.bold('status:- ' + error.response.status)));
+        });
   }
 
   /**
