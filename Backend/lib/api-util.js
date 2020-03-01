@@ -67,6 +67,22 @@ class ApiUtility {
         });
   }
 
+  /**
+  * get randomword of a word
+  * @param {string} word
+  * @return {promise} incomplete.
+  */
+  getRandomWOrd() {
+    const url = `${this.host}/words/`+
+    `randomWord?api_key=${this.apikey}`;
+
+    return axios.get(url)
+        .catch(function(error) {
+          log(chalk.bold(error.response.data.error +' '+
+          chalk.red.underline.bold('status:- ' + error.response.status)));
+        });
+  }
+
   // getWordFullDict(word) {
 
   //   return response;

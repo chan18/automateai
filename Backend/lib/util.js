@@ -1,5 +1,6 @@
 const chalk = require('chalk');
 const log = console.log;
+const wordOfTheDayCommand = require('../commands/wordoftheday');
 
 const utility = {
   getRelationsipType(data, relationsipType) {
@@ -14,7 +15,7 @@ const utility = {
   },
   wordOfTheDay() {
     if (process.argv.length === 2) {
-      console.log('word of the day');
+      wordOfTheDayCommand.word();
       return true;
     }
   },

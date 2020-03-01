@@ -1,7 +1,5 @@
 const ApiUtility = require('../lib/api-util');
 const utility = require('../lib/util.js');
-const chalk = require('chalk');
-const log = console.log;
 
 const example = {
   word() {
