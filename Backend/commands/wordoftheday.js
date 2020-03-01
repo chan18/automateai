@@ -1,43 +1,22 @@
-const ApiUtility = require('../lib/api-util');
-const utility = require('../lib/util');
+const ApiUtility = require('../lib/api-util.js');
+const helper = require('../lib/helper.js');
 const chalk = require('chalk');
 const log = console.log;
 
-const antonym = {
+const wordoftheday = {
   word() {
-    const apiUtility = new ApiUtility();
     let word = '';
-
-    console.log(utility);
+    const apiUtility = new ApiUtility();
 
     apiUtility.getRandomWord()
         .then((randomWord) => {
           word = randomWord.data.word;
-          log(chalk.bold.green(word));
-        }).then(() =>{
-          apiUtility.getDefinitions(word)
-              .then((data) => {
-                // console.log(data.data, utility);
-                // //utility.print(data.data);
-              });
+          log(chalk.bold.blue('Random Word:- ') + ' '+
+          chalk.bold.bgGreen(word) + '\n');
         }).then(() => {
-          // ['synonym', 'antonym'].forEach((phrase) =>{
-          //   apiUtility.getRelatedWords(word)
-          //       .then((data) => {
-          //         utility.getRelationsipType(data, phrase )
-          //             .forEach(function(word) {
-          //               log(chalk.bold.green(word));
-          //             });
-          //       });
-          // });
-        })
-        .then(() => {
-          // apiUtility.getExamples(word)
-          //     .then(function(response) {
-          //       utility.print(response.data.examples);
-          //     });
+          helper.fullDict(word);
         });
   },
 };
 
-module.exports = antonym;
+module.exports = wordoftheday;

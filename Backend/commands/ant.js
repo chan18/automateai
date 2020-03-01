@@ -1,7 +1,7 @@
 const ApiUtility = require('../lib/api-util');
 const chalk = require('chalk');
 const log = console.log;
-const utility = require('../lib/util');
+const helper = require('../lib/helper');
 
 const antonym = {
   word() {
@@ -11,7 +11,7 @@ const antonym = {
 
       apiUtility.getRelatedWords(word)
           .then((data) => {
-            utility.getRelationsipType(data, 'antonym')
+            helper.getRelationsipType(data, 'antonym')
                 .forEach(function(word) {
                   log(chalk.bold.green(word));
                 });

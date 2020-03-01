@@ -1,5 +1,5 @@
-const ApiUtility = require('../lib/api-util');
-const utility = require('../lib/util.js');
+const ApiUtility = require('../lib/api-util.js');
+const helper = require('../lib/helper.js');
 
 const defination = {
   word() {
@@ -8,7 +8,7 @@ const defination = {
       const apiUtility = new ApiUtility();
 
       apiUtility.getDefinitions(word).then((data) => {
-        utility.print(data.data);
+        helper.print(data.data);
       });
     }
   },

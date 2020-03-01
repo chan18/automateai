@@ -27,7 +27,8 @@ class ApiUtility {
 
     return axios.get(url)
         .catch(function(error) {
-          log(chalk.bold(error.response.data.error +' '+
+          log( chalk.bold.blue('definition') + ' '+
+          chalk.bold(error.response.data.error +' '+
           chalk.red.underline.bold('status:- ' + error.response.status)));
         });
   }
@@ -46,7 +47,8 @@ class ApiUtility {
           return response.data;
         })
         .catch(function(error) {
-          log(chalk.bold(error.response.data.error +' '+
+          log(chalk.bold.blue('Related Words') + ' '+
+          chalk.bold(error.response.data.error +' '+
           chalk.red.underline.bold('status:- ' + error.response.status)));
         });
   }
@@ -62,7 +64,8 @@ class ApiUtility {
 
     return axios.get(url)
         .catch(function(error) {
-          log(chalk.bold(error.response.data.error +' '+
+          log(chalk.bold.blue('Examples') + ' '+
+          chalk.bold(error.response.data.error +' '+
           chalk.red.underline.bold('status:- ' + error.response.status)));
         });
   }
@@ -78,20 +81,11 @@ class ApiUtility {
 
     return axios.get(url)
         .catch(function(error) {
-          log(chalk.bold(error.response.data.error +' '+
+          log(chalk.bold.blue('Random Word') + ' '+
+          chalk.bold(error.response.data.error +' '+
           chalk.red.underline.bold('status:- ' + error.response.status)));
         });
   }
-
-  // getWordFullDict(word) {
-
-  //   return response;
-  // }
-
-  // getWordOfTheDay(word) {
-
-  //   return response;
-  // }
 }
 
 module.exports = ApiUtility;
