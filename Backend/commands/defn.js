@@ -10,7 +10,7 @@ const defination = {
       const apiUtility = new ApiUtility();
 
       apiUtility.getDefinitions(word).then((data) => {
-        utility.print(data);
+        utility.print(data.data);
       });
     }
   },
