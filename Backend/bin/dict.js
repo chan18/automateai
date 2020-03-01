@@ -6,18 +6,12 @@ const pkg = require('../package.json');
 
 program
     .version(pkg.version)
-    .command('defn', 'Display definitions of a given word.');
+    .command('defn <word>', 'Display definitions of a given word.')
+    .command('syn <word>', 'Display synonyms of a given word.')
+    .command('ant <word>', 'Display antonyms of a given word.')
+    .command('ex <word>', 'Display Word Definitions, Word Synonyms,'+
+             'Word Antonyms & Word Examples for a given word.');
 
 program
     .parse(process.argv);
-
-// // parse console arguments
-// console.log({argv});
-
-// console.log((new Credentialmanager()).getHost());
-// request(host+'/word/'+argv._[0]+'/definitions?api_key='+key,
-//     function(error, response, body) {
-//       // Print the HTML for the Google homepage.
-//       console.log('body:', body);
-//     });
 

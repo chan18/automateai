@@ -8,10 +8,14 @@ const defination = {
       const word = process.argv[2];
       const apiUtility = new ApiUtility();
 
-      apiUtility.getDefinitions(word)
+      apiUtility.getSynonyms(word)
           .then(function(response) {
-            response.data.forEach(function(data) {
-              log(chalk.bold.green(data.text));
+            response.data.forEach(function(item) {
+              if (item.relationshipType == 'synonym') {
+                item.words.forEach(function(word) {
+                  log(chalk.bold.green(word));
+                });
+              }
             });
           })
           .catch(function(error) {

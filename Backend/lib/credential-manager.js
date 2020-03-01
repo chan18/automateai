@@ -1,7 +1,7 @@
 const Configstore = require('configstore');
 
 /**
- * CredentialManager
+ * CredentialManager to manage secret keys
  */
 class CredentialManager {
   /**

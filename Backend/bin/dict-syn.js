@@ -1,14 +1,14 @@
 const progarm = require('commander');
 const pkg = require('../package.json');
-const defination = require('../commands/defn.js');
+const synonym = require('../commands/syn');
 
 progarm
     .version(pkg.version);
 
 progarm
-    .command('defn [word]')
-    .description('Display definitions of a given word')
-    .action(defination.word(process.argv));
+    .command('syn [word]')
+    .description('Display antonyms of a given word.')
+    .action(synonym.word(process.argv));
 
 progarm
     .parse(process.argv);
