@@ -1,25 +1,24 @@
 const ApiUtility = require('../lib/api-util');
+const utility = require('../lib/util');
 const chalk = require('chalk');
 const log = console.log;
-const utility = require('../lib/util');
 
 const antonym = {
   word() {
     const apiUtility = new ApiUtility();
     let word = '';
-    // definition
-    // syn
-    // ant
-    // ex
 
-    apiUtility.getRandomWOrd()
+    console.log(utility);
+
+    apiUtility.getRandomWord()
         .then((randomWord) => {
           word = randomWord.data.word;
           log(chalk.bold.green(word));
         }).then(() =>{
           apiUtility.getDefinitions(word)
               .then((data) => {
-                utility.print(data.data);
+                // console.log(data.data, utility);
+                // //utility.print(data.data);
               });
         }).then(() => {
           // ['synonym', 'antonym'].forEach((phrase) =>{

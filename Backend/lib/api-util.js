@@ -72,7 +72,7 @@ class ApiUtility {
   * @param {string} word
   * @return {promise} incomplete.
   */
-  getRandomWOrd() {
+  getRandomWord() {
     const url = `${this.host}/words/`+
     `randomWord?api_key=${this.apikey}`;
 
