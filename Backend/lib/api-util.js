@@ -19,16 +19,13 @@ class ApiUtility {
   /**
   * get definition of a word
   * @param {string} word
-  * @return {any} data.
+  * @return {promise} incomplete promise.
   */
   getDefinitions(word) {
     const url = `${this.host}/word/${word}/`+
                 `definitions?api_key=${this.apikey}`;
 
     return axios.get(url)
-        .then(function(response) {
-          return response.data;
-        })
         .catch(function(error) {
           log(chalk.bold(error.response.data.error +' '+
           chalk.red.underline.bold('status:- ' + error.response.status)));
@@ -59,23 +56,15 @@ class ApiUtility {
   * @param {string} word
   * @return {promise} incomplete.
   */
-  getAntonyms(word) {
-    const url = `${this.host}/word/${word}/`+
-    `relatedWords?api_key=${this.apikey}`;
-
-    return axios.get(url);
-  }
-
-  /**
-  * get Synonyms of a word
-  * @param {string} word
-  * @return {promise} incomplete.
-  */
   getExamples(word) {
     const url = `${this.host}/word/${word}/`+
     `examples?api_key=${this.apikey}`;
 
-    return axios.get(url);
+    return axios.get(url)
+        .catch(function(error) {
+          log(chalk.bold(error.response.data.error +' '+
+          chalk.red.underline.bold('status:- ' + error.response.status)));
+        });
   }
 
   // getWordFullDict(word) {

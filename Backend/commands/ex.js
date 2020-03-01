@@ -12,10 +12,6 @@ const example = {
       apiUtility.getExamples(word)
           .then(function(response) {
             utility.print(response.data.examples);
-          })
-          .catch(function(error) {
-            log(chalk.bold(error.response.data.error +' '+
-            chalk.red.underline.bold('status:- ' + error.response.status)));
           });
     }
   },
