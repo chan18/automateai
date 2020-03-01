@@ -6,6 +6,9 @@ const utility = {
     for (i = 0; i < data.length; i++) {
       if (data[i].relationshipType.toUpperCase() == relationsipType.toUpperCase()) {
         return data[i].words;
+      } else {
+        log(chalk.bold.red('antonym not found'));
+        return [];
       }
     }
   },
