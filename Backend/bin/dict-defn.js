@@ -8,7 +8,7 @@ progarm
 progarm
     .command('defn <word>')
     .description('Display definitions of a given word')
-    .action(defination.word(process.argv));
+    .action(defination.word());
 
 progarm
     .parse(process.argv);

@@ -1,22 +1,20 @@
+const ApiUtility = require('../lib/api-util');
 const chalk = require('chalk');
 const log = console.log;
-const ApiUtility = require('../lib/api-util');
+const utility = require('../lib/util');
 
-const defination = {
+const synonym = {
   word() {
     if (process.argv[2]) {
       const word = process.argv[2];
       const apiUtility = new ApiUtility();
 
-      apiUtility.getSynonyms(word)
+      apiUtility.getRelatedWords(word)
           .then(function(response) {
-            response.data.forEach(function(item) {
-              if (item.relationshipType == 'synonym') {
-                item.words.forEach(function(word) {
+            utility.getRelationsipType(response.data, 'synonym')
+                .forEach(function(word) {
                   log(chalk.bold.green(word));
                 });
-              }
-            });
           })
           .catch(function(error) {
             log(chalk.bold(error.response.data.error +' '+
@@ -26,4 +24,4 @@ const defination = {
   },
 };
 
-module.exports = defination;
+module.exports = synonym;

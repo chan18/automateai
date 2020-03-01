@@ -1,18 +1,20 @@
 const ApiUtility = require('../lib/api-util');
 const chalk = require('chalk');
 const log = console.log;
+const utility = require('../lib/util');
 
-const defination = {
+const antonym = {
   word() {
     if (process.argv[2]) {
       const word = process.argv[2];
       const apiUtility = new ApiUtility();
 
-      apiUtility.getDefinitions(word)
+      apiUtility.getRelatedWords(word)
           .then(function(response) {
-            response.data.forEach(function(data) {
-              log(chalk.bold.green(data.text));
-            });
+            utility.getRelationsipType(response.data, 'antonym')
+                .forEach(function(word) {
+                  log(chalk.bold.green(word));
+                });
           })
           .catch(function(error) {
             log(chalk.bold(error.response.data.error +' '+
@@ -22,4 +24,4 @@ const defination = {
   },
 };
 
-module.exports = defination;
+module.exports = antonym;

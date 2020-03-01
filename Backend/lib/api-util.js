@@ -31,22 +31,36 @@ class ApiUtility {
   * @param {string} word
   * @return {promise} incomplete.
   */
-  getSynonyms(word) {
+  getRelatedWords(word) {
     const url = `${this.host}/word/${word}/`+
                 `relatedWords?api_key=${this.apikey}`;
 
     return axios.get(url);
   }
 
-  // getAntonyms(word) {
+  /**
+  * get Synonyms of a word
+  * @param {string} word
+  * @return {promise} incomplete.
+  */
+  getAntonyms(word) {
+    const url = `${this.host}/word/${word}/`+
+    `relatedWords?api_key=${this.apikey}`;
 
-  //   return response;
-  // }
+    return axios.get(url);
+  }
 
-  // getExamples(word) {
+  /**
+  * get Synonyms of a word
+  * @param {string} word
+  * @return {promise} incomplete.
+  */
+  getExamples(word) {
+    const url = `${this.host}/word/${word}/`+
+    `examples?api_key=${this.apikey}`;
 
-  //   return response;
-  // }
+    return axios.get(url);
+  }
 
   // getWordFullDict(word) {
 
