@@ -8,16 +8,11 @@ const defination = {
       const word = process.argv[2];
       const apiUtility = new ApiUtility();
 
-      apiUtility.getDefinitions(word)
-          .then(function(response) {
-            response.data.forEach(function(data) {
-              log(chalk.bold.green(data.text));
-            });
-          })
-          .catch(function(error) {
-            log(chalk.bold(error.response.data.error +' '+
-            chalk.red.underline.bold('status:- ' + error.response.status)));
-          });
+      apiUtility.getDefinitions(word).then((data) => {
+        data.forEach(function(data) {
+          log(chalk.bold.green(data.text));
+        });
+      });
     }
   },
 };

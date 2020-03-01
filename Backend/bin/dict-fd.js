@@ -1,14 +1,14 @@
 const progarm = require('commander');
 const pkg = require('../package.json');
-const synonym = require('../commands/syn.js');
+const fullDict = require('../commands/fd.js');
 
 progarm
     .version(pkg.version);
 
 progarm
-    .command('syn <word>')
-    .description('Display antonyms of a given word.')
-    .action(synonym.word());
+    .command('fd <word>')
+    .description('Display Word Definitions, Word Synonyms, Word Antonyms & Word Examples for a given word.')
+    .action(fullDict.word());
 
 progarm
     .parse(process.argv);

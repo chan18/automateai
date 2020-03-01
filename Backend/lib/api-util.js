@@ -1,5 +1,7 @@
 const axios = require('axios');
 const CredentialManager = require('./credential-manager');
+const chalk = require('chalk');
+const log = console.log;
 
 /**
  * Utility
@@ -17,13 +19,20 @@ class ApiUtility {
   /**
   * get definition of a word
   * @param {string} word
-  * @return {promise} incomplete.
+  * @return {any} data.
   */
   getDefinitions(word) {
     const url = `${this.host}/word/${word}/`+
                 `definitions?api_key=${this.apikey}`;
 
-    return axios.get(url);
+    return axios.get(url)
+        .then(function(response) {
+          return response.data;
+        })
+        .catch(function(error) {
+          log(chalk.bold(error.response.data.error +' '+
+          chalk.red.underline.bold('status:- ' + error.response.status)));
+        });
   }
 
   /**

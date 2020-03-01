@@ -7,6 +7,12 @@ const utility = {
       }
     }
   },
+  wordOfTheDay() {
+    if (process.argv.length === 2) {
+      console.log('word of the day');
+      return true;
+    }
+  },
 };
 
 module.exports = utility;
