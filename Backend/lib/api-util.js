@@ -5,9 +5,8 @@ const CredentialManager = require('./credential-manager');
  * Utility
  */
 class ApiUtility {
-
   /**
-  * init configstore
+  * init ApiUtility
   */
   constructor() {
     this.credentialManager = new CredentialManager();

@@ -6,7 +6,7 @@ progarm
     .version(pkg.version);
 
 progarm
-    .command('syn [word]')
+    .command('syn <word>')
     .description('Display antonyms of a given word.')
     .action(synonym.word(process.argv));
 

@@ -6,7 +6,7 @@ progarm
     .version(pkg.version);
 
 progarm
-    .command('defn [word]')
+    .command('defn <word>')
     .description('Display definitions of a given word')
     .action(defination.word(process.argv));
 
