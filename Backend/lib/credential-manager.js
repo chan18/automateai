@@ -16,11 +16,15 @@ class CredentialManager {
   * @return {string} from local user json file.
   */
   getKey() {
-    const key = this.conf.get('apikey');
+    let key = this.conf.get('apikey');
+    const envKeyName = `DICT_APIKEY`;
+    if (envKeyName in process.env) {
+      key = process.env[envKeyName];
+    }
     if (key) {
       return key;
     } else {
-      console.log('apikey not found');
+      throw new Error(`Missing ${key} key -- have you 'configure ${key}'?`);
     }
   }
 
@@ -29,14 +33,17 @@ class CredentialManager {
   * @return {string} from local user json file.
   */
   getHost() {
-    const host = this.conf.get('host');
+    let host = this.conf.get('host');
+    const envHostUrl = `DICT_HOST_URL`;
+    if (envHostUrl in process.env) {
+      host = process.env[envHostUrl];
+    }
     if (host) {
       return host;
     } else {
-      console.log('host not found');
+      throw new Error(`Missing ${key} key -- have you 'configure ${key}'?`);
     }
   }
 }
 
 module.exports = CredentialManager;
-
