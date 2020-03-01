@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 
-const progarm = require('commander');
+const program = require('commander');
 const pkg = require('../package.json');
 
-progarm
+
+program
     .version(pkg.version)
-    .command('def', 'Display definitions of a given word');
+    .command('defn', 'Display definitions of a given word.');
+
+program
+    .parse(process.argv);
 
 // // parse console arguments
 // console.log({argv});

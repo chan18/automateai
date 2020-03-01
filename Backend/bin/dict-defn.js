@@ -1,14 +1,14 @@
 const progarm = require('commander');
 const pkg = require('../package.json');
-const defination = require('../commands/def.js');
+const defination = require('../commands/defn.js');
 
 progarm
     .version(pkg.version);
 
 progarm
-    .command('def')
+    .command('defn')
     .description('Display definitions of a given word')
-    .action(defination.word(process.argv[3]));
+    .action(defination.word(process.argv));
 
 progarm
     .parse(process.argv);
