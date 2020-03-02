@@ -1,0 +1,19 @@
+
+
+<mat-drawer-container class="example-container">
+
+  <mat-sidenav #sidenav mode="side"
+                [(opened)]="opened">
+    Sidenav content
+  </mat-sidenav>
+
+  <!-- <mat-drawer mode="side" opened>
+    Drawer content
+  </mat-drawer> -->
+
+  <mat-drawer-content>
+    TEXT EDITOR
+    <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
+  </mat-drawer-content>
+
+</mat-drawer-container>
