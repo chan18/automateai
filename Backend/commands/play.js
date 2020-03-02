@@ -2,11 +2,12 @@ const ApiUtility = require('../lib/api-util');
 const chalk = require('chalk');
 const log = console.log;
 const helper = require('../lib/helper');
-const inquirer = require('inquirer');
+const PlayGame = require('../lib/play');
 
 const play = {
   word() {
     const apiUtility = new ApiUtility();
+    const playGame = new PlayGame();
     let word = '';
 
     apiUtility.getRandomWord()
@@ -16,11 +17,11 @@ const play = {
           apiUtility.getDefinitions(word)
               .then((def) => {
                 if (def) {
-                  log(chalk.bold.blue('Definition:- ') + word);
+                  log(chalk.bold.blue('Definition:- '));
                   helper.print(def.data);
                 }
               }).then(() => {
-                helper.guessTheWord(word);
+                playGame.guessTheWord(word);
               });
         });
   },
