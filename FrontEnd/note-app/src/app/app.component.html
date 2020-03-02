@@ -1,16 +1,58 @@
-<mat-sidenav-container>
+<mat-card>
 
-  <!-- side nav content -->
-  <mat-sidenav mode="side" opened disableClose>
-    <p *ngFor="let item of list"> {{item}} </p>
-    <p> asdfasdf </p>
-  </mat-sidenav>
+  <mat-card-header>
+    <button mat-icon-button >
+      <mat-icon>note_add</mat-icon>
+    </button>
 
-  <!-- text editor -->
-  <mat-sidenav-content>
-    <quill-editor>
+    <button mat-icon-button >
+      <mat-icon>delete_forever</mat-icon>
+    </button>
+  </mat-card-header>
 
-    </quill-editor>
-  </mat-sidenav-content>
+  <mat-card-content>
+    <mat-sidenav-container>
 
-</mat-sidenav-container>
+      <!-- side nav content -->
+      <mat-sidenav mode="side" opened disableClose>
+        <mat-list>
+          <div *ngFor="let item of list">
+            <mat-list-item>{{item}}</mat-list-item>
+            <mat-divider></mat-divider>
+          </div>
+        </mat-list>
+      </mat-sidenav>
+
+      <!-- text editor -->
+      <mat-sidenav-content>
+        <quill-editor [styles]="{height: '200px'}">
+          <div quill-editor-toolbar>
+            <span class="ql-formats">
+              <button class="ql-bold" [title]="'Bold'"></button>
+            </span>
+            <span class="ql-formats">
+              <select class="ql-align" [title]="'Aligment'">
+                <option selected></option>
+                <option value="center"></option>
+                <option value="right"></option>
+                <option value="justify"></option>
+              </select>
+              <select class="ql-align" [title]="'Aligment2'">
+                <option selected></option>
+                <option value="center"></option>
+                <option value="right"></option>
+                <option value="justify"></option>
+              </select>
+            </span>
+          </div>
+        </quill-editor>
+      </mat-sidenav-content>
+
+    </mat-sidenav-container>
+  </mat-card-content>
+
+  <mat-card-actions>
+
+  </mat-card-actions>
+
+</mat-card>
