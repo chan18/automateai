@@ -1,19 +1,16 @@
+<mat-sidenav-container>
 
-
-<mat-drawer-container class="example-container">
-
-  <mat-sidenav #sidenav mode="side"
-                [(opened)]="opened">
-    Sidenav content
+  <!-- side nav content -->
+  <mat-sidenav mode="side" opened disableClose>
+    <p *ngFor="let item of list"> {{item}} </p>
+    <p> asdfasdf </p>
   </mat-sidenav>
 
-  <!-- <mat-drawer mode="side" opened>
-    Drawer content
-  </mat-drawer> -->
+  <!-- text editor -->
+  <mat-sidenav-content>
+    <quill-editor>
 
-  <mat-drawer-content>
-    TEXT EDITOR
-    <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
-  </mat-drawer-content>
+    </quill-editor>
+  </mat-sidenav-content>
 
-</mat-drawer-container>
+</mat-sidenav-container>

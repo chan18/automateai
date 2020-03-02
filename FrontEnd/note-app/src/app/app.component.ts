@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   opened: boolean = true;
+  list: Array<number> = [1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3,1, 2, 3];
+
+  blured = false
+  focused = false
 
   title = 'note-app';
+
+
 }
