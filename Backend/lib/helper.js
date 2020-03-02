@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 const log = console.log;
 const ApiUtility = require('../lib/api-util.js');
+const inquirer = require('inquirer');
 
 const helper = {
   print(data) {
@@ -12,11 +13,63 @@ const helper = {
     for (i = 0; i < data.length; i++) {
       if (data[i].relationshipType.toUpperCase() == relationsipType.toUpperCase()) {
         return data[i].words;
-      } else {
-        log(chalk.bold.red(`${relationsipType} not found`));
-        return [];
       }
     }
+    log(chalk.bold.red(`${relationsipType} not found`));
+    return [];
+  },
+  guessTheWord(word) {
+    let synonyms = [];
+    const apiUtility = new ApiUtility();
+
+    apiUtility.getRelatedWords(word)
+        .then((data) => {
+          if (data) {
+            synonyms = helper.getRelationsipType(data, 'synonym');
+          }
+        }).then(() => {
+          synonyms.push(word);
+
+          question =
+          {
+            type: 'string',
+            name: 'name',
+            message: 'guess the word?',
+          };
+
+          inquirer
+              .prompt(question)
+              .then((answer) => {
+                console.log(synonyms);
+                console.log(synonyms.includes(answer.name));
+                if (synonyms.includes(answer.name)) {
+                  log('\n' + chalk.bold.bgGreen('success'));
+                } else {
+                  helper.userChoices();
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+        });
+  },
+  userChoices() {
+    question =
+    {
+      type: 'list',
+      name: 'please select',
+      choices: ['Try again', 'Hint', 'Quit'],
+    };
+
+    inquirer
+        .prompt(question)
+        .then((answer) => {
+          console.log(answer);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
   },
   fullDict(word) {
     const apiUtility = new ApiUtility();
