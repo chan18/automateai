@@ -1,5 +1,5 @@
 const ApiUtility = require('../lib/api-util');
-const utility = require('../lib/util.js');
+const helper = require('../lib/helper.js');
 
 const example = {
   word() {
@@ -9,7 +9,7 @@ const example = {
 
       apiUtility.getExamples(word)
           .then(function(response) {
-            utility.print(response.data.examples);
+            helper.print(response.data.examples);
           });
     }
   },

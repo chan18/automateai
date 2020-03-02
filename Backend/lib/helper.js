@@ -40,12 +40,10 @@ const helper = {
           inquirer
               .prompt(question)
               .then((answer) => {
-                console.log(synonyms);
-                console.log(synonyms.includes(answer.name));
                 if (synonyms.includes(answer.name)) {
                   log('\n' + chalk.bold.bgGreen('success'));
                 } else {
-                  helper.userChoices();
+                  helper.userChoices(word);
                 }
               })
               .catch((error) => {
@@ -53,18 +51,43 @@ const helper = {
               });
         });
   },
-  userChoices() {
+  userChoices(word) {
+    const apiUtility = new ApiUtility();
+
     question =
     {
       type: 'list',
-      name: 'please select',
-      choices: ['Try again', 'Hint', 'Quit'],
+      name: 'selected',
+      choices: ['Try Again', 'Hint', 'Quit'],
     };
 
     inquirer
         .prompt(question)
         .then((answer) => {
-          console.log(answer);
+          switch (answer.selected) {
+            case 'Try Again':
+              helper.guessTheWord(word);
+              break;
+            case 'Hint':
+              apiUtility.getRelatedWords(word)
+                  .then((data) => {
+                    log(chalk.bold.blue('synonym:- '))
+                    helper.getRelationsipType(data, 'synonym')
+                        .forEach(function(word) {
+                          log(chalk.bold.green(word));
+                        });
+                  }).then(() => {
+                    helper.guessTheWord(word);
+                  });
+              break;
+            case 'Quit':
+              helper.fullDict(word);
+              return;
+              break;
+
+            default:
+              break;
+          }
         })
         .catch((error) => {
           console.log(error);
