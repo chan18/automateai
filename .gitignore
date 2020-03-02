@@ -107,39 +107,53 @@ dist
 .vscode-test
 
 
-# boilerplate files
-**/src/environments/environment.prod.ts
-**/src/environments/environment.ts
-**/src/assets/.gitkeep
-**/src/favicon.ico
-**/src/styles.css
-**/src/systemjs-angular-loader.js
-**/src/systemjs.config.js
-**/src/tsconfig.json
-**/src/favicon.ico
-**/src/polyfills.ts
-**/src/test.ts
-**/src/tsconfig.app.json
-**/src/tsconfig.spec.json
-**/src/typings.d.ts
-**/e2e/src/app.po.ts
-**/e2e/tsconfig.e2e.json
-**/src/karma.conf.js
-**/.angular-cli.json
-**/.editorconfig
-**/angular.json
-**/tsconfig.json
-**/bs-config.e2e.json
-**/bs-config.json
-**/package.json
-**/tsconfig.json
-**/tsconfig.app.json
-**/tsconfig.spec.json
-**/tslint.json
-**/karma-test-shim.js
-**/browser-test-shim.js
-**/browserslist
-**/node_modules
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
 
 # built files
 *.map
