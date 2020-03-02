@@ -1,12 +1,12 @@
 const helper = require('../lib/helper.js');
-const chalk = require('chalk');
-const log = console.log;
+const WordDictionary = require('../lib/word-dictionary');
 
 const fullDict = {
   word() {
     if (process.argv[2]) {
       const word = process.argv[2];
-      helper.fullDict(word);
+      const wordDictionary = new WordDictionary();
+      wordDictionary.lookup(word);
     }
   },
 };
