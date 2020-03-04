@@ -46,6 +46,14 @@ export class AppComponent implements OnDestroy {
     }
   }
 
+  editNote() {
+    let note = this.form.get('note').value;
+    if(note.length > 1) {
+      this.notes[this.selectedItem].note =  note;
+      this.notes[this.selectedItem].timeStamp = moment().format("ddd, h:mm A");
+    }
+  }
+
   setNote() {
      this.form.setValue({'note':this.notes[this.selectedItem].note});
      this.notes[this.selectedItem].timeStamp = moment().format("ddd, h:mm A");
@@ -58,6 +66,7 @@ export class AppComponent implements OnDestroy {
   noteClick(index,event) {
     this.selectedItem = index;
     this.form.setValue({'note': this.notes[this.selectedItem].note});
+    this.notes[this.selectedItem].timeStamp = moment().format("ddd, h:mm A");
   }
 
   noteDelete(){
