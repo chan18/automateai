@@ -1,6 +1,8 @@
 import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
+import { Note } from 'src/models/note';
+import * as moment from "moment";
 
 @Component({
   selector: 'app-root',
@@ -9,15 +11,18 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
 })
 
 export class AppComponent implements OnDestroy {
+  notes: Array<Note> = new Array<Note>();
   opened: boolean = true;
-  list: Array<string> = ["asdf"];
   blured = false
   focused = false
+  sidebar = true;
   title = 'note-app';
   content = "tesatsdfasdf";
+  selectedItem: number = 0;
+
 
   form: FormGroup = this.fb.group({
-    note: new FormControl("form control test"),
+    note: new FormControl("new form notes.."),
   });
 
   mobileQuery: MediaQueryList;
@@ -34,12 +39,29 @@ export class AppComponent implements OnDestroy {
   }
 
   addNote() {
-    this.list.push(this.form.get('note').value);
-    this.form.setValue({'note': ' '});
+    let note = this.form.get('note').value;
+    if(note.length > 1) {
+      this.notes.push({note: note,timeStamp: moment().format("ddd, h:mm A")});
+      this.form.setValue({'note': ' '});
+    }
+  }
+
+  setNote() {
+     this.form.setValue({'note':this.notes[this.selectedItem].note});
+     this.notes[this.selectedItem].timeStamp = moment().format("ddd, h:mm A");
   }
 
   getNewNote() {
     return this.form.get('note').value;
+  }
+
+  noteClick(index,event) {
+    this.selectedItem = index;
+    this.form.setValue({'note': this.notes[this.selectedItem].note});
+  }
+
+  noteDelete(){
+    this.notes.splice(this.selectedItem,1);
   }
 
 }
